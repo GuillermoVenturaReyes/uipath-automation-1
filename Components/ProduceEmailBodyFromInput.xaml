@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>824,1552</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>824,1684.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProduceEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow produces the body of an email by aggregating other components. The workflow takes in String arguments for the email template, a custom message, and optionally a GoogleForm and a signature. It then produces an out argument representing the joined, single String that represents the body of an email to be sent.&#xA;&#xA;This workflow throws a NullReferenceException if any non-optional argument is null, to prevent the email from being only partially constructed." DisplayName="ProduceEmailFromInput" sap:VirtualizedContainerService.HintSize="560,1447.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow produces the body of an email by aggregating other components. The workflow takes in String arguments for the email template, a custom message, and optionally a GoogleForm and a signature. It then produces an out argument representing the joined, single String that represents the body of an email to be sent.&#xA;&#xA;This workflow throws a NullReferenceException if any non-optional argument is null, to prevent the email from being only partially constructed." DisplayName="ProduceEmailFromInput" sap:VirtualizedContainerService.HintSize="560,1580" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="EmailComponents" />
     </Sequence.Variables>
@@ -89,6 +89,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Producing email body from components...&quot;]" />
     <If Condition="[IsNothing(in_EmailTemplate) AndAlso IsNothing(in_EmailCustomMessage)]" sap:VirtualizedContainerService.HintSize="518.4,209.6" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Throw Exception="[new NullReferenceException(&quot;One of the components of the email being produced was null. All non-optional arguments should be configured.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
