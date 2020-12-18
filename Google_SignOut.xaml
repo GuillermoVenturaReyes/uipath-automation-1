@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="The browser window being used" Name="in_Browser" Type="InArgument(ui:UiElement)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1754,1010</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1754,1041</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -70,10 +70,11 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="476,905" sap2010:WorkflowViewState.IdRef="Sequence_42">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence signs out of all google accounts." DisplayName="Sign Out Sequence" sap:VirtualizedContainerService.HintSize="476,936" sap2010:WorkflowViewState.IdRef="Sequence_42">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Signing current user out&quot;]" />
