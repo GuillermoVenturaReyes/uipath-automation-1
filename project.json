@@ -3,6 +3,7 @@
   "description": "Introduction Email Automation",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.GSuite.Activities": "[1.8.0]",
     "UiPath.Mail.Activities": "[1.9.3]",
