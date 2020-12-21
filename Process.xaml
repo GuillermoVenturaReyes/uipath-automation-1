@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property sap2010:Annotation.AnnotationText="The browser to use for web UI activities." Name="in_Browser" Type="InArgument(ui:Browser)" />
+    <x:Property sap2010:Annotation.AnnotationText="The browser to use for web UI activities." Name="in_Application" Type="InArgument(ui:UiElement)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
