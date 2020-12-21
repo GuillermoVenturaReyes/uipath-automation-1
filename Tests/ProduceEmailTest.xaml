@@ -26,7 +26,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -52,6 +52,8 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Test workflow used to ensure the email producing workflow creates the email with the right structure." DisplayName="Test Producing email" sap:VirtualizedContainerService.HintSize="400.8,757.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -62,6 +64,7 @@
       <Variable x:TypeArguments="x:String" Name="CustomMessage" />
       <Variable x:TypeArguments="x:String" Name="FormLink" />
       <Variable x:TypeArguments="x:String" Name="Signature" />
+      <Variable x:TypeArguments="x:String" Name="Subject" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -87,6 +90,9 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_Signature">
           <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Signature" />
         </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Subject">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Subject" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <Assign sap:VirtualizedContainerService.HintSize="359.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -99,23 +105,13 @@
     </Assign>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProduceEmailBodyFromInput workflow" sap:VirtualizedContainerService.HintSize="359.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\ProduceEmailBodyFromInput.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EmailTemplate">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Template" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EmailCustomMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CustomMessage" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_GoogleFormLink">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FormLink" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ProducedEmailBody" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_OptionalSignature">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Signature" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailTemplate">[Template]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailCustomMessage">[CustomMessage]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GoogleFormLink">[FormLink]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">[ProducedEmailBody]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OptionalSignature">[Signature]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="359.2,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[ProducedEmailBody]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="359.2,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[String.Format(&quot;Subject is {0}, Body is : {1}&quot;, Subject,ProducedEmailBody)]" />
   </Sequence>
 </Activity>
