@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>824,1033.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1753,987</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetEmailBodyInputFromUser_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -51,7 +51,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -73,9 +73,18 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="This workflow gets the user's input for an intro email by displaying a form for them to input a template, a custom message, and a Google Form URL.&#xA;&#xA;Throws a InvalidProgramException if the user dismisses the form.&#xA;Throws a ValidationException if the required fields are empty.&#xA;Throws a FileNotFoundException if the user gives a filepath that does not exist." DisplayName="Flowchart - Get Email Body Input" sap:VirtualizedContainerService.HintSize="718.4,928.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="This workflow gets the user's input for an intro email by displaying a form for them to input a template, a custom message, and a Google Form URL.&#xA;&#xA;Throws a InvalidProgramException if the user dismisses the form.&#xA;Throws a ValidationException if the required fields are empty.&#xA;Throws a FileNotFoundException if the user gives a filepath that does not exist." DisplayName="Flowchart - Get Email Body Input" sap:VirtualizedContainerService.HintSize="719,922" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="CustomMessage" />
       <Variable x:TypeArguments="x:String" Name="Signature" />
@@ -88,7 +97,7 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">90,2.4</av:Point>
-        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">120,77.6 120,103.6</av:PointCollection>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         <x:Double x:Key="Height">783.6</x:Double>
@@ -102,11 +111,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">20,170</av:Point>
-          <av:Size x:Key="ShapeSize">200,100</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">120,270 120,300 330,300 330,326.4</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,97</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">120,267 120,297 330,297 330,326.4</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Present Form to User" sap:VirtualizedContainerService.HintSize="200,100" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Present Form to User" sap:VirtualizedContainerService.HintSize="200,97" sap2010:WorkflowViewState.IdRef="Sequence_6">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="FormOutputJSON" />
         </Sequence.Variables>
@@ -117,10 +126,10 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ufa:FormActivity FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" Dismissed="[FormWasDismissed]" DisplayName="Create Form To Get User Info" FormFieldsOutputData="[FormOutputJSON]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Subject Line&quot;,&quot;placeholder&quot;:&quot;Insert Subject line for email...&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;maxWords&quot;:15},&quot;key&quot;:&quot;Subject&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Template&quot;,&quot;placeholder&quot;:&quot;Insert email template here if you do not have a file path to insert...&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;EmailTemplate&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;rows&quot;:5,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;label&quot;:&quot;Email Template File&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;TemplatePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select&quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true},{&quot;label&quot;:&quot;Custom Message&quot;,&quot;placeholder&quot;:&quot;Insert message here...&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;CustomMessage&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;Signature (Optional)&quot;,&quot;placeholder&quot;:&quot;Insert signature here if your email does not already add one...&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;Signature&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;calculateServer&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="597.6,785.6" sap2010:WorkflowViewState.IdRef="FormActivity_2" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+        <ufa:FormActivity FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" DisableMaximizeButton="False" DisableMinimizeButton="False" Dismissed="[FormWasDismissed]" DisplayName="Create Form To Get User Info" FormFieldsOutputData="[FormOutputJSON]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Subject Line&quot;,&quot;placeholder&quot;:&quot;Insert Subject line for email...&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;validate&quot;:{&quot;required&quot;:true,&quot;maxWords&quot;:15},&quot;key&quot;:&quot;Subject&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true},{&quot;label&quot;:&quot;Template&quot;,&quot;placeholder&quot;:&quot;Insert email template here if you do not have a file path to insert...&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;EmailTemplate&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;rows&quot;:5,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;label&quot;:&quot;Email Template File&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;key&quot;:&quot;TemplatePath&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select&quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true},{&quot;label&quot;:&quot;Custom Message&quot;,&quot;placeholder&quot;:&quot;Insert message here...&quot;,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;CustomMessage&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;Signature (Optional)&quot;,&quot;placeholder&quot;:&quot;Insert signature here if your email does not already add one...&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;Signature&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;calculateServer&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="True" sap:VirtualizedContainerService.HintSize="601,780" sap2010:WorkflowViewState.IdRef="FormActivity_2" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
           <ufa:FormActivity.Body>
             <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
-              <Sequence DisplayName="Retrieve Form Data" sap:VirtualizedContainerService.HintSize="560.8,659.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence DisplayName="Retrieve Form Data" sap:VirtualizedContainerService.HintSize="563,654" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="njl:JObject" Name="FormOutputJSONObj" />
                 </Sequence.Variables>
@@ -130,16 +139,16 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="519.2,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[FormOutputJSONObj]" JsonString="[FormOutputJSON]" />
-                <If Condition="[FormOutputJSONObj(&quot;submit&quot;).ToString = (True).ToString]" DisplayName="If the form was submitted properly" sap:VirtualizedContainerService.HintSize="519.2,466.4" sap2010:WorkflowViewState.IdRef="If_5">
+                <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[FormOutputJSONObj]" JsonString="[FormOutputJSON]" />
+                <If Condition="[FormOutputJSONObj(&quot;submit&quot;).ToString = (True).ToString]" DisplayName="If the form was submitted properly" sap:VirtualizedContainerService.HintSize="521,462" sap2010:WorkflowViewState.IdRef="If_5">
                   <If.Then>
-                    <Sequence DisplayName="Extract Data from JSON" sap:VirtualizedContainerService.HintSize="375.2,316.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence DisplayName="Extract Data from JSON" sap:VirtualizedContainerService.HintSize="376,314" sap2010:WorkflowViewState.IdRef="Sequence_7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:MultipleAssign DisplayName="Multiple Assign - Assign Form Data to Variables" sap:VirtualizedContainerService.HintSize="333.6,224" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                      <ui:MultipleAssign DisplayName="Multiple Assign - Assign Form Data to Variables" sap:VirtualizedContainerService.HintSize="334,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                         <ui:MultipleAssign.AssignOperations>
                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
@@ -202,12 +211,12 @@
         </ufa:FormActivity>
       </Sequence>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID2" Condition="[FormWasDismissed]" DisplayName="Was Form Dismissed?" sap:VirtualizedContainerService.HintSize="120,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+        <FlowDecision x:Name="__ReferenceID2" Condition="[FormWasDismissed]" DisplayName="Was Form Dismissed?" sap:VirtualizedContainerService.HintSize="120,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <av:Point x:Key="ShapeLocation">270,326.4</av:Point>
-              <av:Size x:Key="ShapeSize">120,87.2</av:Size>
+              <av:Size x:Key="ShapeSize">120,87</av:Size>
               <x:String x:Key="FalseLabel">No</x:String>
               <x:String x:Key="TrueLabel">Yes</x:String>
               <av:PointCollection x:Key="TrueConnector">270,370 150,370 150,408.8</av:PointCollection>
@@ -219,22 +228,19 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">50,408.8</av:Point>
-                  <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+                  <av:Size x:Key="ShapeSize">200,22</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Throw DisplayName="Throw InvalidProgramException" Exception="[new InvalidProgramException(&quot;User needs to input data.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
+              <Throw DisplayName="Throw InvalidProgramException" Exception="[new InvalidProgramException(&quot;User needs to input data.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
             </FlowStep>
           </FlowDecision.True>
           <FlowDecision.False>
-            <FlowDecision x:Name="__ReferenceID8" DisplayName="Subject Line Exists?" sap:VirtualizedContainerService.HintSize="107.2,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
-              <FlowDecision.Condition>
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Subject IsNot String.Empty" />
-              </FlowDecision.Condition>
+            <FlowDecision x:Name="__ReferenceID8" Condition="[Subject IsNot String.Empty]" DisplayName="Subject Line Exists?" sap:VirtualizedContainerService.HintSize="107,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">516.4,286.4</av:Point>
-                  <av:Size x:Key="ShapeSize">107.2,87.2</av:Size>
+                  <av:Size x:Key="ShapeSize">107,87</av:Size>
                   <x:String x:Key="TrueLabel">Yes</x:String>
                   <x:String x:Key="FalseLabel">No</x:String>
                   <av:PointCollection x:Key="TrueConnector">516.4,330 490,330 490,406.4</av:PointCollection>
@@ -242,12 +248,15 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.True>
-                <FlowDecision x:Name="__ReferenceID4" Condition="[EmailTemplatePath IsNot String.Empty AndAlso EmailTemplate IsNot String.Empty OrElse CustomMessage IsNot String.Empty]" DisplayName="Template/Custom Message Exists?" sap:VirtualizedContainerService.HintSize="160,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                <FlowDecision x:Name="__ReferenceID4" DisplayName="Template/Custom Message Exists?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                  <FlowDecision.Condition>
+                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="EmailTemplatePath IsNot String.Empty Or EmailTemplate IsNot String.Empty Or CustomMessage IsNot String.Empty" />
+                  </FlowDecision.Condition>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <av:Point x:Key="ShapeLocation">410,406.4</av:Point>
-                      <av:Size x:Key="ShapeSize">160,87.2</av:Size>
+                      <av:Size x:Key="ShapeSize">160,87</av:Size>
                       <x:String x:Key="TrueLabel">Yes</x:String>
                       <x:String x:Key="FalseLabel">No</x:String>
                       <av:PointCollection x:Key="TrueConnector">410,450 280,450 280,476.4</av:PointCollection>
@@ -255,12 +264,12 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
-                    <FlowDecision x:Name="__ReferenceID7" Condition="[EmailTemplatePath IsNot String.Empty]" DisplayName="Template Path Input Exists?" sap:VirtualizedContainerService.HintSize="148.8,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                    <FlowDecision x:Name="__ReferenceID7" Condition="[EmailTemplatePath IsNot String.Empty]" DisplayName="Template Path Input Exists?" sap:VirtualizedContainerService.HintSize="149,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <av:Point x:Key="ShapeLocation">205.6,476.4</av:Point>
-                          <av:Size x:Key="ShapeSize">148.8,87.2</av:Size>
+                          <av:Size x:Key="ShapeSize">149,87</av:Size>
                           <av:PointCollection x:Key="TrueConnector">205.6,520 160,520 160,575.6</av:PointCollection>
                           <x:String x:Key="TrueLabel">Yes</x:String>
                           <x:String x:Key="FalseLabel">No</x:String>
@@ -272,11 +281,11 @@
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">60,575.6</av:Point>
-                              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">160,644.4 160,674.4 280,674.4 280,703.6</av:PointCollection>
+                              <av:Size x:Key="ShapeSize">200,66</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">160,641.6 160,671.6 280,671.6 280,703.6</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Read Template File if it exists" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <Sequence DisplayName="Read Template File if it exists" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:Boolean" Name="TemplatePathExists" />
                             </Sequence.Variables>
@@ -300,10 +309,10 @@
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">180,703.6</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                                  <av:Size x:Key="ShapeSize">200,51</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MultipleAssign DisplayName="Multiple Assign - Assign to out args" sap:VirtualizedContainerService.HintSize="333.6,192.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                              <ui:MultipleAssign DisplayName="Multiple Assign - Assign to out args" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                                 <ui:MultipleAssign.AssignOperations>
                                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
@@ -355,11 +364,11 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">430,518.8</av:Point>
-                          <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+                          <av:Size x:Key="ShapeSize">200,22</av:Size>
                           <av:PointCollection x:Key="ConnectorLocation">630,530 630,530</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Throw DisplayName="Throw ValidationException" Exception="[new ValidationException(&quot;Not all required values had valid data.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                      <Throw DisplayName="Throw ValidationException" Exception="[new ValidationException(&quot;Not all required values had valid data.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
                       <FlowStep.Next>
                         <x:Reference>__ReferenceID1</x:Reference>
                       </FlowStep.Next>
@@ -384,11 +393,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">20,103.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">120,156.4 120,170</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,51</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">120,154.6 120,170</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message - Begin Getting Email Input" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Getting user input for email...&quot;]">
+      <ui:LogMessage DisplayName="Log Message - Begin Getting Email Input" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Getting user input for email...&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
