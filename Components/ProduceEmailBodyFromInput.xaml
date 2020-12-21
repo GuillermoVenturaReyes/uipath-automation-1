@@ -5,11 +5,12 @@
     <x:Property Name="in_GoogleFormLink" Type="InArgument(x:String)" />
     <x:Property Name="out_EmailBody" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="This optional argument refers to a signature for the end of the email, if required." Name="in_OptionalSignature" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,2059.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1753,2103</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProduceEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -46,7 +47,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -77,9 +78,11 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow produces the body of an email by aggregating other components. The workflow takes in String arguments for the email template, a custom message, and optionally a GoogleForm and a signature. It then produces an out argument representing the joined, single String that represents the body of an email to be sent.&#xA;&#xA;This workflow throws a NullReferenceException if any non-optional argument is null, to prevent the email from being only partially constructed." DisplayName="ProduceEmailFromInput" sap:VirtualizedContainerService.HintSize="560,1954.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow produces the body of an email by aggregating other components. The workflow takes in String arguments for the email template, a custom message, and optionally a GoogleForm and a signature. It then produces an out argument representing the joined, single String that represents the body of an email to be sent.&#xA;&#xA;This workflow throws a NullReferenceException if any non-optional argument is null, to prevent the email from being only partially constructed." DisplayName="ProduceEmailFromInput" sap:VirtualizedContainerService.HintSize="562,1998" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="EmailComponents" />
     </Sequence.Variables>
@@ -89,13 +92,13 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Producing email body from components...&quot;]" />
-    <If Condition="[IsNothing(in_EmailTemplate) AndAlso IsNothing(in_EmailCustomMessage)]" sap:VirtualizedContainerService.HintSize="518.4,209.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Producing email body from components...&quot;]" />
+    <If Condition="[IsNothing(in_EmailTemplate) AndAlso IsNothing(in_EmailCustomMessage)]" sap:VirtualizedContainerService.HintSize="520,208" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Throw Exception="[new NullReferenceException(&quot;One of the components of the email being produced was null. All non-optional arguments should be configured.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        <Throw Exception="[new NullReferenceException(&quot;One of the components of the email being produced was null. All non-optional arguments should be configured.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
       </If.Then>
     </If>
-    <Assign DisplayName="Assign - Empty List of Email parts " sap:VirtualizedContainerService.HintSize="518.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - Empty List of Email parts " sap:VirtualizedContainerService.HintSize="520,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[EmailComponents]</OutArgument>
       </Assign.To>
@@ -103,37 +106,38 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[in_EmailTemplate isnot nothing]" DisplayName="If - EmailTemplate arg is not null" sap:VirtualizedContainerService.HintSize="518.4,209.6" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[in_EmailTemplate isnot nothing]" DisplayName="If - EmailTemplate arg is not null" sap:VirtualizedContainerService.HintSize="520,208" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
-        <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add Template To Collection" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[in_EmailTemplate]" />
+        <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add Template To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[in_EmailTemplate]" />
       </If.Then>
     </If>
-    <If Condition="[in_EmailCustomMessage isnot nothing]" DisplayName="If - CustomMessage arg is not null" sap:VirtualizedContainerService.HintSize="518.4,209.6" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[in_EmailCustomMessage isnot nothing]" DisplayName="If - CustomMessage arg is not null" sap:VirtualizedContainerService.HintSize="520,208" sap2010:WorkflowViewState.IdRef="If_5">
       <If.Then>
-        <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add CustomMessage To Collection" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="[in_EmailCustomMessage]" />
+        <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add CustomMessage To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="[in_EmailCustomMessage]" />
       </If.Then>
     </If>
-    <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add GoogleFormLink To Collection" sap:VirtualizedContainerService.HintSize="518.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[in_GoogleFormLink]" />
-    <If Condition="[in_OptionalSignature isnot nothing]" DisplayName="If - OptionalSignature arg is not null" sap:VirtualizedContainerService.HintSize="518.4,209.6" sap2010:WorkflowViewState.IdRef="If_1">
+    <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add GoogleFormPrompt To Collection" sap:VirtualizedContainerService.HintSize="520,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6" Item="[in_Config(&quot;GoogleFormPrompt&quot;).ToString]" />
+    <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add GoogleFormLink To Collection" sap:VirtualizedContainerService.HintSize="520,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[in_GoogleFormLink]" />
+    <If Condition="[in_OptionalSignature isnot nothing]" DisplayName="If - OptionalSignature arg is not null" sap:VirtualizedContainerService.HintSize="520,208" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add Signature To Email Components" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="[in_OptionalSignature]" />
+        <AddToCollection x:TypeArguments="x:String" Collection="[EmailComponents]" DisplayName="Add Signature To Email Components" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="[in_OptionalSignature]" />
       </If.Then>
     </If>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - Component in EmailComponents List" sap:VirtualizedContainerService.HintSize="518.4,344" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[EmailComponents]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - Component in EmailComponents List" sap:VirtualizedContainerService.HintSize="520,342" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[EmailComponents]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="component" />
           </ActivityAction.Argument>
-          <If Condition="[component is nothing]" DisplayName="If - Email component is nothing/null" sap:VirtualizedContainerService.HintSize="483.2,209.6" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[component is nothing]" DisplayName="If - Email component is nothing/null" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Throw Exception="[new NullReferenceException(&quot;One of the components of the email being produced was null. All non-optional arguments should be configured.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw Exception="[new NullReferenceException(&quot;One of the components of the email being produced was null. All non-optional arguments should be configured.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </If.Then>
           </If>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <Assign DisplayName="Assign - Completed Email body" sap:VirtualizedContainerService.HintSize="518.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Completed Email body" sap:VirtualizedContainerService.HintSize="520,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_EmailBody]</OutArgument>
       </Assign.To>
