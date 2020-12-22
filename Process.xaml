@@ -99,7 +99,7 @@
                 <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailSubject" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_EmailBody">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailSubject" />
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailBody" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_ClientCredential">
                 <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;GSuiteCredential&quot;).ToString" />
@@ -110,18 +110,10 @@
         <If.Else>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Zoho_SendMail workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Components\Zoho_SendMail.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_EmailAddress">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Email&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailSubject" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_EmailBody">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailBody" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ZohoCredential">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ZohoCredential&quot;).ToString" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_EmailAddress">[in_TransactionItem("Email").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">[in_EmailSubject]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_EmailBody">[in_EmailBody]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ZohoCredential">[in_Config("ZohoCredential").ToString]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </If.Else>

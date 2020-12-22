@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1754,5814</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1753,5815</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_GoogleForms_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="74">
@@ -85,7 +85,7 @@
       <AssemblyReference>System.Windows.Presentation</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This process generates a google form for associates to enter thier github name, github email given the input of a batch name of type string as an argument in_BatchName&#xA;&#xA;Precondition: User is logged into google, a batch name is defined for the form&#xA;&#xA;Post Condition:  String corresponding to emded HTML link in out_FormURL argument as string type " DisplayName="Web_Google_Generate_GoogleForms" sap:VirtualizedContainerService.HintSize="924,5709" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This process generates a google form for associates to enter thier github name, github email given the input of a batch name of type string as an argument in_BatchName&#xA;&#xA;Precondition: User is logged into google, a batch name is defined for the form&#xA;&#xA;Post Condition:  String corresponding to emded HTML link in out_FormURL argument as string type " DisplayName="Web_Google_Generate_GoogleForms" sap:VirtualizedContainerService.HintSize="924,5710" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:UiElement" Name="Broswer" />
     </Sequence.Variables>
@@ -96,13 +96,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="882,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Generation of Google form starting&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge - NagivateTo_Google_Forms" sap:VirtualizedContainerService.HintSize="882,4277" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[Broswer]" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge - NagivateTo_Google_Forms" sap:VirtualizedContainerService.HintSize="882,4278" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" OutUiElement="[Broswer]" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="Creates a new google form" DisplayName="Sequence - Generate New Batch Form" sap:VirtualizedContainerService.HintSize="848,4061" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence sap2010:Annotation.AnnotationText="Creates a new google form" DisplayName="Sequence - Generate New Batch Form" sap:VirtualizedContainerService.HintSize="848,4062" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="ui:UiElement" Name="NewFormTarget" />
             </Sequence.Variables>
@@ -113,7 +113,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="806,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_3" Url="forms.google.com" />
-            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State - Check if blank template exits" sap:VirtualizedContainerService.HintSize="806,486" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="0.5">
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State - Check if blank template exits" sap:VirtualizedContainerService.HintSize="806,486" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="3">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Sequence - Target appears" sap:VirtualizedContainerService.HintSize="376,260" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
