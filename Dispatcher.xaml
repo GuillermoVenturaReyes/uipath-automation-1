@@ -108,6 +108,7 @@
       <Variable x:TypeArguments="x:String" Name="JSONFormData" />
       <Variable x:TypeArguments="x:String" Name="EmailBody" />
       <Variable x:TypeArguments="x:String" Name="EmailChoice" />
+      <Variable x:TypeArguments="njl:JObject" Name="JSONObject" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -117,9 +118,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetEmailAddresses workflow" sap:VirtualizedContainerService.HintSize="455,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\GetEmailAddresses.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_EmailAddressDT">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_TransactionDataDT" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_EmailAddressDT">[out_TransactionDataDT]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog - Get batch name" sap:VirtualizedContainerService.HintSize="455,238" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter the Batch Name" Title="Batch Name">
@@ -161,59 +160,36 @@
     </uix:NApplicationCard>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetEmailBodyInputFromUser workflow" sap:VirtualizedContainerService.HintSize="455,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Components\GetEmailBodyInputFromUser.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailTemplate">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailTemplate" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_CustomMessage">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CustomerMessage" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_Signature">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Signature" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_Subject">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_EmailSubject" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailTemplate">[EmailTemplate]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CustomMessage">[CustomerMessage]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Signature">[Signature]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Subject">[out_EmailSubject]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProduceEmailBodyFromInput workflow" sap:VirtualizedContainerService.HintSize="455,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Components\ProduceEmailBodyFromInput.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EmailTemplate">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailTemplate" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_EmailCustomMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CustomerMessage" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_GoogleFormLink">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FormURL" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailBody" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_OptionalSignature">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Signature" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailTemplate">[EmailTemplate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailCustomMessage">[CustomerMessage]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_GoogleFormLink">[FormURL]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">[EmailBody]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OptionalSignature">[Signature]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" sap2010:Annotation.AnnotationText="This form presents the user with the generated email that will be sent to Associates and allows them to edit it. It also makes them choose between sending from GSuite or Zoho." DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form - Confirm email and select domain" FormFieldsOutputData="[JSONFormData]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Generated Email Body&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;EmailBody&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;label&quot;:&quot;From what account would you like to send the email?&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;GSuite&quot;,&quot;value&quot;:&quot;gSuite&quot;,&quot;shortcut&quot;:&quot;G&quot;},{&quot;label&quot;:&quot;Zoho&quot;,&quot;value&quot;:&quot;zoho&quot;,&quot;shortcut&quot;:&quot;Z&quot;}],&quot;validate&quot;:{&quot;required&quot;:true},&quot;key&quot;:&quot;EmailChoice&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;calculateServer&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="455,504" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
+    <ufa:FormActivity Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormTitle="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" sap2010:Annotation.AnnotationText="This form presents the user with the generated email that will be sent to Associates and allows them to edit it. It also makes them choose between sending from GSuite or Zoho." DisableMaximizeButton="False" DisableMinimizeButton="False" DisplayName="Create Form - Confirm email and select domain" FormFieldsOutputData="[JSONFormData]" FormHeight="400" FormSchema="%[{&quot;label&quot;:&quot;Generated Email Body&quot;,&quot;tableView&quot;:true,&quot;key&quot;:&quot;EmailBody&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;label&quot;:&quot;From what account would you like to send the email?&quot;,&quot;optionsLabelPosition&quot;:&quot;right&quot;,&quot;inline&quot;:false,&quot;tableView&quot;:false,&quot;values&quot;:[{&quot;label&quot;:&quot;GSuite&quot;,&quot;value&quot;:&quot;gSuite&quot;,&quot;shortcut&quot;:&quot;G&quot;},{&quot;label&quot;:&quot;Zoho&quot;,&quot;value&quot;:&quot;zoho&quot;,&quot;shortcut&quot;:&quot;Z&quot;}],&quot;validate&quot;:{&quot;required&quot;:true},&quot;key&quot;:&quot;EmailChoice&quot;,&quot;type&quot;:&quot;radio&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false},{&quot;type&quot;:&quot;button&quot;,&quot;label&quot;:&quot;Submit&quot;,&quot;key&quot;:&quot;submit&quot;,&quot;disableOnInvalid&quot;:true,&quot;input&quot;:true,&quot;tableView&quot;:false,&quot;calculateServer&quot;:false}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="800" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="455,504" sap2010:WorkflowViewState.IdRef="FormActivity_2" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False">
       <ufa:FormActivity.Body>
         <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,321" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="njl:JObject" Name="JSONObject" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,321" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JSONObject]" JsonString="[JSONFormData]" />
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[JSONObject]" JsonString="[JSONFormData]" />
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
                     <ui:AssignOperation.To>
                       <OutArgument x:TypeArguments="x:String">[out_EmailBody]</OutArgument>
                     </ui:AssignOperation.To>
@@ -221,12 +197,12 @@
                       <InArgument x:TypeArguments="x:String">[JSONObject("EmailBody").ToString]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
                     <ui:AssignOperation.To>
                       <OutArgument x:TypeArguments="x:Boolean">[out_IsGSuite]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Boolean">[cBool(IIf(JSONObject("EmailChoice").ToString = "GSuite", True, False))]</InArgument>
+                      <InArgument x:TypeArguments="x:Boolean">[cBool(IIf(JSONObject("EmailChoice").ToString = "gSuite", True, False))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
@@ -237,16 +213,12 @@
       </ufa:FormActivity.Body>
       <ufa:FormActivity.DelayBody>
         <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
-          <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_2" />
         </ActivityAction>
       </ufa:FormActivity.DelayBody>
       <ufa:FormActivity.FormFieldsCollection>
-        <InArgument x:TypeArguments="x:String" x:Key="EmailBody">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailBody" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="EmailChoice">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="EmailChoice" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="EmailBody">[EmailBody]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="EmailChoice">[EmailChoice]</OutArgument>
       </ufa:FormActivity.FormFieldsCollection>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
