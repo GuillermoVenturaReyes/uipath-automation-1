@@ -6,11 +6,12 @@
     <x:Property Name="out_EmailBody" Type="OutArgument(x:String)" />
     <x:Property Name="out_EmailSubject" Type="OutArgument(x:String)" />
     <x:Property Name="out_MailService" Type="OutArgument(x:String)" />
+    <x:Property Name="out_BatchName" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>691.2,2528</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>850.4,2528</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatcher_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
@@ -127,7 +128,7 @@
         <OutArgument x:TypeArguments="x:String">[BatchName]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Edge: New tab" sap:VirtualizedContainerService.HintSize="453.6,578.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OutUiElement="[Browser]" Version="V1">
+    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Always" DisplayName="Use Browser Edge: New tab" sap:VirtualizedContainerService.HintSize="453.6,578.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" OutUiElement="[Browser]" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -227,7 +228,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ufa:FormActivity>
-    <Assign sap2010:Annotation.AnnotationText="This assigns the mail service choice by taking the boolean from the form workflow, and if GSuite is used, it uses the Gmail choice string determined in the Config.xlsx file. If not, right now it uses the Zoho choice. &#xD;&#xA;&#xD;&#xA;!!!!!!&#xD;&#xA;This should be changed so that other email services could be supported.&#xD;&#xA;!!!!!!" DisplayName="Assign- Mail Service out argument" sap:VirtualizedContainerService.HintSize="453.6,248" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="This assigns the mail service choice by taking the boolean from the form workflow, and if GSuite is used, it uses the Gmail choice string determined in the Config.xlsx file. If not, right now it uses the Zoho choice. &#xA;&#xA;!!!!!!&#xA;This should be changed so that other email services could be supported.&#xA;!!!!!!" DisplayName="Assign- Mail Service out argument" sap:VirtualizedContainerService.HintSize="453.6,248" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_MailService]</OutArgument>
       </Assign.To>
