@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>691.2,899.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>850.4,939.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Google_Check2FA_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -43,7 +43,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -63,6 +63,7 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Google_Check2FA" sap:VirtualizedContainerService.HintSize="689.6,834.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -99,7 +100,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Handling 2FA for Google account&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;2FA detected. Please finsh signing on then presss Ok&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;2FA detected. Please finish signing on until you are at the home page and see your profile icon in the top right of the webpage, then click the Ok button on this message box.&quot;]" />
       </Sequence>
       <FlowStep.Next>
         <FlowStep x:Name="__ReferenceID3">
@@ -110,20 +111,20 @@
               <av:PointCollection x:Key="ConnectorLocation">290,334.4 290,346.4</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="957.6,997.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,208.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Sign in - Google Accounts" sap:VirtualizedContainerService.HintSize="916,828.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" Version="V1">
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Sign in - Google Accounts" sap:VirtualizedContainerService.HintSize="916,829.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" Version="V1">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Check for popups" sap:VirtualizedContainerService.HintSize="882.4,612" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Check for popups" sap:VirtualizedContainerService.HintSize="882.4,612.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="TwoStepPopupExists" />
                       <Variable x:TypeArguments="x:Boolean" Name="PhoneNotificationExists" />
@@ -139,7 +140,7 @@
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NCheckState DisplayName="Check for 2 Step popup" EnableIfExists="False" EnableIfNotExists="False" Exists="[TwoStepPopupExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_1">
+                      <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2 Step popup" EnableIfExists="False" EnableIfNotExists="False" Exists="[TwoStepPopupExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_1">
                         <uix:NCheckState.IfExists>
                           <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
                             <sap:WorkflowViewStateService.ViewState>
@@ -173,7 +174,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </uix:NCheckState>
-                      <uix:NCheckState DisplayName="Check for 2FA phone notification" EnableIfExists="False" EnableIfNotExists="False" Exists="[PhoneNotificationExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_4">
+                      <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2FA phone notification" EnableIfExists="False" EnableIfNotExists="False" Exists="[PhoneNotificationExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_4">
                         <uix:NCheckState.IfExists>
                           <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <sap:WorkflowViewStateService.ViewState>
@@ -248,14 +249,13 @@
                       <av:Size x:Key="ShapeSize">200,128.8</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Log message and finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,128.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,128.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Successfully signed user in&quot;]" />
                   </Sequence>
                 </FlowStep>
               </FlowDecision.False>
