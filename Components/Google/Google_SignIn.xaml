@@ -376,9 +376,11 @@
                               <av:PointCollection x:Key="ConnectorLocation">730,646.4 730,695.6</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Google\Google_Check2FA.xaml">
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="342.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Components\Google\Google_Check2FA.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                              <InArgument x:TypeArguments="ui:UiElement" x:Key="in_Browser">
+                                <mva:VisualBasicValue x:TypeArguments="ui:UiElement" ExpressionText="Browser" />
+                              </InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
