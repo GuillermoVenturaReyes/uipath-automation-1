@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>691.2,833.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1108.8,845.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -77,7 +77,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="This business process chooses whether or not to support either Zoho or Gmail depending on the sending domain, and send an email to the target email address, individually.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process Flowchart" sap:VirtualizedContainerService.HintSize="633.6,779.2" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+  <Flowchart sap2010:Annotation.AnnotationText="This business process chooses whether or not to support either Zoho or Gmail depending on the sending domain, and send an email to the target email address, individually.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process Flowchart" sap:VirtualizedContainerService.HintSize="634,780.4" sap2010:WorkflowViewState.IdRef="Flowchart_2">
     <Flowchart.Variables>
       <Variable x:TypeArguments="s:String[]" Name="SupportedEmailServices" />
       <Variable x:TypeArguments="x:String" Name="TargetEmailAddress" />
@@ -126,11 +126,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">390,109.6</av:Point>
-              <av:Size x:Key="ShapeSize">200,400.8</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">390,310 360,310 360,180 338.8,180</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,408.8</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">390,314 360,314 360,180 337.2,180</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="This determines the total list of supported launchers in order that they'll be checked by the following Flow Switch. These combined are a simple logical check of which email service to use using strings, so if new email services were supported, the choice string would only need to be set in the dispatching workflow, passed in by the in_MailService argument, and added to the SupportedEmailServices list. Then, a new case could be added to the following flow switch leading to the workflowt that sends the email with the new service." DisplayName="Use list of supported email services" sap:VirtualizedContainerService.HintSize="200,400.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence sap2010:Annotation.AnnotationText="This determines the total list of supported launchers in order that they'll be checked by the following Flow Switch. These combined are a simple logical check of which email service to use using strings, so if new email services were supported, the choice string would only need to be set in the dispatching workflow, passed in by the in_MailService argument, and added to the SupportedEmailServices list. Then, a new case could be added to the following flow switch leading to the workflowt that sends the email with the new service." DisplayName="Use list of supported email services" sap:VirtualizedContainerService.HintSize="200,408.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="GmailServiceChoice" />
               <Variable x:TypeArguments="x:String" Name="ZohoServiceChoice" />
@@ -173,16 +173,16 @@
             </Assign>
           </Sequence>
           <FlowStep.Next>
-            <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID1" DisplayName="Which Email Service?" Expression="[Array.IndexOf(SupportedEmailServices, in_MailService)]" sap:VirtualizedContainerService.HintSize="117.6,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
+            <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID1" DisplayName="Which Email Service?" Expression="[Array.IndexOf(SupportedEmailServices, in_MailService)]" sap:VirtualizedContainerService.HintSize="116,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
               <FlowSwitch.Default>
                 <FlowStep x:Name="__ReferenceID4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">0,288.8</av:Point>
-                      <av:Size x:Key="ShapeSize">200,22.4</av:Size>
+                      <av:Size x:Key="ShapeSize">200,22</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw DisplayName="Throw WorkflowApplicationException" Exception="[new WorkflowApplicationException(&quot;Could not determine supported email service to use.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_4">
+                  <Throw DisplayName="Throw WorkflowApplicationException" Exception="[new WorkflowApplicationException(&quot;Could not determine supported email service to use.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -194,25 +194,33 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">221.2,136.4</av:Point>
-                  <av:Size x:Key="ShapeSize">117.6,87.2</av:Size>
+                  <av:Size x:Key="ShapeSize">116,87.2</av:Size>
                   <av:PointCollection x:Key="0Connector">221.2,180 100,180 100,203.6</av:PointCollection>
                   <av:PointCollection x:Key="Default">280,223.6 280,300 200,300</av:PointCollection>
-                  <av:PointCollection x:Key="1Connector">309.4,223.6 309.4,360 220,360</av:PointCollection>
+                  <av:PointCollection x:Key="1Connector">308.2,223.6 308.2,359.8 220,359.8</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowStep x:Key="0" x:Name="__ReferenceID2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">0,203.6</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                    <av:Size x:Key="ShapeSize">200,52.4</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Mail with GSuite" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Components\GSuite_SendMail.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Mail with GSuite" sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Components\GSuite_SendMail.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailAddress">[in_TransactionItem("Email").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">[in_EmailSubject]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailBody">[in_EmailBody]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_ClientCredential">[in_Config("GSuiteCredential").ToString]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailAddress">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Email&quot;).ToString" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailSubject" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailBody">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailBody" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ClientCredential">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;GSuiteOAuthCredential&quot;).ToString" />
+                    </InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -225,10 +233,10 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">20,333.6</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+                    <av:Size x:Key="ShapeSize">200,52.4</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Email with Zoho" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Components\Zoho_SendMail.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Email with Zoho" sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Components\Zoho_SendMail.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="in_EmailAddress">[in_TransactionItem("Email").ToString]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">[in_EmailSubject]</InArgument>
@@ -251,11 +259,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">150,23.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          <av:Size x:Key="ShapeSize">200,52.4</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">350,50 390,50</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign - Transaction Data" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+      <ui:MultipleAssign DisplayName="Multiple Assign - Transaction Data" sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
