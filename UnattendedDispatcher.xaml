@@ -1,12 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Dispatcher" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_TransactionDataDT" Type="OutArgument(sd:DataTable)" />
-    <x:Property Name="out_EmailBody" Type="OutArgument(x:String)" />
-    <x:Property Name="out_EmailSubject" Type="OutArgument(x:String)" />
-    <x:Property Name="out_MailService" Type="OutArgument(x:String)" />
-    <x:Property Name="out_BatchName" Type="OutArgument(x:String)" />
-    <x:Property Name="in_InputFilePath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The Config dictionary used throughout the application." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="The datatable holding the list of Associate emails" Name="out_TransactionDataDT" Type="OutArgument(sd:DataTable)" />
+    <x:Property sap2010:Annotation.AnnotationText="The generated email body to be sent out." Name="out_EmailBody" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The subject line of the email to be sent out." Name="out_EmailSubject" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The mail service being used. Should be &quot;Gmail&quot; or &quot;Zoho&quot;" Name="out_MailService" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The name of the batch. This is used to name the Google Form." Name="out_BatchName" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The filepath to the input file." Name="in_InputFilePath" Type="InArgument(x:String)" />
   </x:Members>
   <this:Dispatcher.in_InputFilePath>
     <InArgument x:TypeArguments="x:String" />
@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1697,1872</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1697,1958</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatcher_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="78">
@@ -103,7 +103,7 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This is the dispatcher sequence that gets called during the init state. It does the following actions:&#xA;- Read list of emails from excel file&#xA;- Gets the  batch name from the user&#xA;- Signs into Google&#xA;- Generates new google form&#xA;- Gets email body input from user&#xA;- Generates email body&#xA;&#xA;" DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="497,1767" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This is the unattended dispatcher sequence that gets called during the init state. It does the following actions:&#xA;- Reads input file with all necessary startup information&#xD;&#xA;- Reads emalil template file&#xD;&#xA;- Reads associated email xslx file&#xA;- Generates google form&#xD;&#xA;- Generates email body to be sent out" DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="497,1853" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="EmailTemplate" />
       <Variable x:TypeArguments="x:String" Name="CustomMessage" />
@@ -119,6 +119,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="455,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Starting unattended dispatcher&quot;]" />
     <Sequence DisplayName="Read In input file Sequence" sap:VirtualizedContainerService.HintSize="455,748" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EmailInfo" />
@@ -129,10 +130,10 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadTextFile Content="[EmailInfo]" DisplayName="Read Text File" FileName="[in_InputFilePath]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[JSONEmailInfo]" JsonString="[EmailInfo]" />
-      <ui:ReadTextFile Content="[EmailTemplate]" DisplayName="Read Text File" FileName="[JSONEmailInfo(&quot;EmailTemplateFilePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
-      <ui:ReadRange DataTable="{x:Null}" AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="384,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[JSONEmailInfo(&quot;AssociateEmailsFilePath&quot;).ToString]">
+      <ui:ReadTextFile Content="[EmailInfo]" DisplayName="Read Text File - with input data" FileName="[in_InputFilePath]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON input data" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[JSONEmailInfo]" JsonString="[EmailInfo]" />
+      <ui:ReadTextFile Content="[EmailTemplate]" DisplayName="Read Text File - with email template" FileName="[JSONEmailInfo(&quot;EmailTemplateFilePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+      <ui:ReadRange AddHeaders="True" DataTable="[out_TransactionDataDT]" DisplayName="Read Associate emails" sap:VirtualizedContainerService.HintSize="384,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[JSONEmailInfo(&quot;AssociateEmailsFilePath&quot;).ToString]">
         <ui:ReadRange.Range>
           <InArgument x:TypeArguments="x:String">
             <Literal x:TypeArguments="x:String" Value="" />

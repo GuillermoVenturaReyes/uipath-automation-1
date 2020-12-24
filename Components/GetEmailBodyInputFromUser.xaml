@@ -1,14 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetEmailBodyInputFromUser" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetEmailBodyInputFromUser" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_EmailTemplate" Type="OutArgument(x:String)" />
     <x:Property Name="out_CustomMessage" Type="OutArgument(x:String)" />
     <x:Property Name="out_Signature" Type="OutArgument(x:String)" />
     <x:Property Name="out_Subject" Type="OutArgument(x:String)" />
-    <x:Property Name="out_BatchName" Type="InArgument(x:String)" />
+    <x:Property Name="out_BatchName" Type="OutArgument(x:String)" />
   </x:Members>
-  <this:GetEmailBodyInputFromUser.out_BatchName>
-    <InArgument x:TypeArguments="x:String" />
-  </this:GetEmailBodyInputFromUser.out_BatchName>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
@@ -120,7 +117,7 @@
           <av:PointCollection x:Key="ConnectorLocation">120,267 120,297 330,297 330,326.4</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Present Form to User" sap:VirtualizedContainerService.HintSize="643,934" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Present Form to User" sap:VirtualizedContainerService.HintSize="200,97" sap2010:WorkflowViewState.IdRef="Sequence_6">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="FormOutputJSON" />
         </Sequence.Variables>
@@ -362,7 +359,7 @@
                                         <OutArgument x:TypeArguments="x:String">[out_BatchName]</OutArgument>
                                       </ui:AssignOperation.To>
                                       <ui:AssignOperation.Value>
-                                        <InArgument x:TypeArguments="x:String">[If((BatchName= String.Empty), Nothing, Subject)]</InArgument>
+                                        <InArgument x:TypeArguments="x:String">[If((BatchName= String.Empty), Nothing, BatchName)]</InArgument>
                                       </ui:AssignOperation.Value>
                                     </ui:AssignOperation>
                                   </scg:List>
