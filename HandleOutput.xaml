@@ -2,15 +2,15 @@
   <x:Members>
     <x:Property Name="in_TransactionData" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_BatchName" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_BatchName" Type="InArgument(x:String)" />
   </x:Members>
   <this:WriteOutput.in_BatchName>
-    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+    <InArgument x:TypeArguments="x:String" />
   </this:WriteOutput.in_BatchName>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>850.4,696</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1697,1126</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>WriteOutput_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -80,7 +80,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow represents what should be done at the end of the process, when all transactions have been handled or when the application is forced to close. &#xA;&#xA;This workflow should be invoked in the End Process state of the Main.xaml workflow of the REFramework, in the finally block of the Try Catch. " DisplayName="Handle Output" sap:VirtualizedContainerService.HintSize="426.4,1036.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow represents what should be done at the end of the process, when all transactions have been handled or when the application is forced to close. &#xA;&#xA;This workflow should be invoked in the End Process state of the Main.xaml workflow of the REFramework, in the finally block of the Try Catch. " DisplayName="Handle Output" sap:VirtualizedContainerService.HintSize="431,1021" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="JsonString" />
     </Sequence.Variables>
@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SerializeDataAsJSON workflow" sap:VirtualizedContainerService.HintSize="384.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\Output\SerializeDataAsJSON.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SerializeDataAsJSON workflow" sap:VirtualizedContainerService.HintSize="389,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\Output\SerializeDataAsJSON.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_DataToSerialize">
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="new Dictionary(Of String,Object) from {{&quot;BatchName&quot;,in_BatchName}}" />
@@ -100,7 +100,7 @@
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="Write to files" sap:VirtualizedContainerService.HintSize="384.8,666.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Write to files" sap:VirtualizedContainerService.HintSize="389,660" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="DocumentsPath" />
         <Variable x:TypeArguments="x:String" Name="BatchNameFileName" />
@@ -113,8 +113,8 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[DocumentsPath]" sap:VirtualizedContainerService.HintSize="343.2,62.4" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="MyDocuments" />
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="343.2,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[DocumentsPath]" sap:VirtualizedContainerService.HintSize="347,61" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="MyDocuments" />
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="347,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -144,20 +144,14 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SimpleWriteToFile workflow" sap:VirtualizedContainerService.HintSize="343.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\Output\SimpleWriteToFile.xaml">
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SimpleWriteToFile workflow" sap:VirtualizedContainerService.HintSize="347,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\Output\SimpleWriteToFile.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FilePath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_FileContent">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="JsonString" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_FileName">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="BatchNameFileName" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[FilePath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FileContent">[JsonString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FileName">[BatchNameFileName]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:WriteRange AddHeaders="False" DataTable="[in_TransactionData]" DisplayName="Write Range - Transaction Data " sap:VirtualizedContainerService.HintSize="343.2,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[FilePath + TransactionReportWorkbookName]">
+      <ui:WriteRange AddHeaders="False" DataTable="[in_TransactionData]" DisplayName="Write Range - Transaction Data " sap:VirtualizedContainerService.HintSize="347,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[FilePath + TransactionReportWorkbookName]">
         <ui:WriteRange.StartingCell>
           <InArgument x:TypeArguments="x:String">
             <Literal x:TypeArguments="x:String" Value="" />
