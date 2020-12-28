@@ -59,9 +59,9 @@ To get this automation running on your machine, you will need to install the Uip
 Once You have installed everything, have credentials & workbook path setup and dealt with the consent screen for the first time, you should be able to run the introductory email automation.
 
 ## Contributors
-Jacob Jennings
-Julie Gibson
-Michael Bachkabakian
+Jacob Jennings,
+Julie Gibson,
+Michael Bachkabakian,
 Vincent Weis
 
 ## License
