@@ -52,7 +52,7 @@ To get this automation running on your machine, you will need to install the Uip
 ###### Consent Screen For Gmail
 * The consent screen that was configured in the previous steps will allow you to send emails with Gmail. 
 * But the first time you try to do this, you will encounter that consent screen and will need to manually give the bot consent to send emails. 
-* You might also have to get past the 'This app isn't verified' screen. Just click the Advanced button and then click 'Go to <App name>(unsafe)'. (This is your own application so their is actually no safety concern)
+* You might also have to get past the 'This app isn't verified' screen. Just click the Advanced button and then click 'Go to <App name>(unsafe)'. (This is your own application so there is actually no safety concern)
 * You wont have to worry about any of this if you are only using Zoho to send the emails.
 
 ## Usage
