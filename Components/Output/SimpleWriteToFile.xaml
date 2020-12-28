@@ -4,7 +4,7 @@
     <x:Property Name="in_FileContent" Type="InArgument(x:String)" />
     <x:Property Name="in_FileName" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>850.4,1187.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,1380</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -60,9 +60,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Write to file" sap:VirtualizedContainerService.HintSize="524.8,1082.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow writes a string to a given filepath. producing the folders and files required to do so if they do not exist to reduce error likelihood. Can produce file to unexpected places if the FilePath is not correct, so this workflow should be used with caution." DisplayName="Write to file" sap:VirtualizedContainerService.HintSize="524.8,1275.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="FolderPathExists" />
       <Variable x:TypeArguments="x:Boolean" Name="PathExists" />
@@ -71,8 +72,10 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[String.Format(&quot;Writing file named {0} at path {1}&quot;, in_FileName, in_FilePath)]" />
     <ui:PathExists DisplayName="Path Exists" Exists="[FolderPathExists]" sap:VirtualizedContainerService.HintSize="483.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_FilePath]" PathType="Folder" />
     <If Condition="[FolderPathExists]" sap:VirtualizedContainerService.HintSize="483.2,230.4" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Else>

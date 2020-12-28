@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1697,1958</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,1968.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatcher_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="78">
@@ -62,7 +62,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -101,9 +101,10 @@
       <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This is the unattended dispatcher sequence that gets called during the init state. It does the following actions:&#xA;- Reads input file with all necessary startup information&#xD;&#xA;- Reads emalil template file&#xD;&#xA;- Reads associated email xslx file&#xA;- Generates google form&#xD;&#xA;- Generates email body to be sent out" DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="497,1853" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This is the unattended dispatcher sequence that gets called during the init state. It does the following actions:&#xA;- Reads input file with all necessary startup information&#xA;- Reads emalil template file&#xA;- Reads associated email xslx file&#xA;- Generates google form&#xA;- Generates email body to be sent out" DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="496.8,1864" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="EmailTemplate" />
       <Variable x:TypeArguments="x:String" Name="CustomMessage" />
@@ -119,8 +120,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="455,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Starting unattended dispatcher&quot;]" />
-    <Sequence DisplayName="Read In input file Sequence" sap:VirtualizedContainerService.HintSize="455,748" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="455.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Starting dispatcher for unattended automation...&quot;]" />
+    <Sequence DisplayName="Read In input file Sequence" sap:VirtualizedContainerService.HintSize="455.2,749.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="EmailInfo" />
         <Variable x:TypeArguments="njl:JObject" Name="JSONEmailInfo" />
@@ -206,24 +207,12 @@
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProduceEmailBodyFromInput workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Components\ProduceEmailBodyFromInput.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_EmailTemplate">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EmailTemplate" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_EmailCustomMessage">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CustomMessage" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_GoogleFormLink">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FormURL" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">
-                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_EmailBody" />
-                </OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_OptionalSignature">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Signature" />
-                </InArgument>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                  <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_EmailTemplate">[EmailTemplate]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_EmailCustomMessage">[CustomMessage]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_GoogleFormLink">[FormURL]</InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">[out_EmailBody]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_OptionalSignature">[Signature]</InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>

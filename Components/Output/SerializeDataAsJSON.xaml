@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>850.4,427.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,427.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AggregateDataAsJSON_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -62,20 +62,17 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AggregateDataAsJSON" sap:VirtualizedContainerService.HintSize="375.2,257.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow takes in the data to be converted in a Dictionary&lt;String,Object&gt; and produces a JSON serialized as a String, as an out argument." DisplayName="AggregateDataAsJSON" sap:VirtualizedContainerService.HintSize="375.2,317.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_JSON = Newtonsoft.Json.JsonConvert.SerializeObject(in_Data)&#xD;&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_JSON = Newtonsoft.Json.JsonConvert.SerializeObject(in_Data)&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
       <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Data">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_DataToSerialize" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_JSON">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_JSONString" />
-        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Data">[in_DataToSerialize]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_JSON">[out_JSONString]</OutArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
   </Sequence>
