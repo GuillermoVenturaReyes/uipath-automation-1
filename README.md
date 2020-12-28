@@ -1,7 +1,7 @@
 # Project 3-1 UiPath-Automation-1
 
 ## Project Description
-This program will automate the reptitive process of sending introductory emails to all new batch associates. The automation supports emails with both ZoHo and Gmail and can be run either attended, or fully unattended.
+This program will automate the reptitive process of sending introductory emails to all new batch associates. The automation supports emails with both Zoho and Gmail and can be run either attended, or fully unattended.
 
 ## Technolgies Used
 * UiPath Studio
