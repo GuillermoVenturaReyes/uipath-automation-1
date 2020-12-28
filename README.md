@@ -24,12 +24,12 @@ This program will automate the reptitive process of sending introductory emails 
 	"MailService": "Zoho"
 }
 ```
-BatchName: Will be used to create the form for automation-2 and will be used in the intro email
-Subject: The subject line for the intro email
-EmailTemplateFilePath: The file path for the email template file to be added to the body of the intro email
-CustomMessage (optional): Add a custom message after the email template
-AssociateEmailsFilePath: The file path to the .xlsx file containing the list of associate emails
-MailService: The mail service you are sending your introduction emails from. As of now it supports "GSuite" (@gmail.com/@revature.com) and "Zoho" (@revature.net) values
+* BatchName: Will be used to create the form for automation-2 and will be used in the intro email
+* Subject: The subject line for the intro email
+* EmailTemplateFilePath: The file path for the email template file to be added to the body of the intro email
+* CustomMessage (optional): Add a custom message after the email template
+* AssociateEmailsFilePath: The file path to the .xlsx file containing the list of associate emails
+* MailService: The mail service you are sending your introduction emails from. As of now it supports "GSuite" (@gmail.com/@revature.com) and "Zoho" (@revature.net) values
 
 ## Getting Started
 To get this automation running on your machine, you will need to install the Uipath Edge extension as well as setup UiPath Orchestrator or Windows Credential Manager with the following assets
