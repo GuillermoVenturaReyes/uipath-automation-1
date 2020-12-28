@@ -1,20 +1,20 @@
 # Project 3-1 UiPath-Automation-1
 
-# Project Description
+## Project Description
 This program will automate the reptitive process of sending introductory emails to all new batch associates. The automation supports emails with both ZoHo and Gmail and can be run either attended, or fully unattended.
 
-# Technolgies Used
+## Technolgies Used
 * UiPath Studio
 * Uipath Orchestrator
 * GSuite API
 * Windows Credential Manager
 
-# Features
+## Features
 * Interact with Googles interfaces to log in/out of Google accounts, handle two factor authentication and access Gmail using the GSuite API
 * Take in all inputs beforehand in the form of a JSON string to make the process completely unattended.
 * Ability to make custom changes to the template message per batch. 
 
-# Getting Started
+## Getting Started
 To get this automation running on your machine, you will need to install the Uipath Edge extension as well as setup UiPath Orchestrator or Windows Credentials Manager with the following assets
 * GoogleCredential
 * ZohoCredential
@@ -55,14 +55,14 @@ To get this automation running on your machine, you will need to install the Uip
 * You might also have to get past the 'This app isn't verified' screen. Just click the Advanced button and then click 'Go to <App name>(unsafe)'. (This is your own application so their is actually no safety concern)
 * You wont have to worry about any of this if you are only using Zoho to send the emails.
 
-# Usage
+## Usage
 Once You have installed everything, have credentials & workbook path setup and dealt with the consent screen for the first time, you should be able to run the introductory email automation.
 
-# Contributors
+## Contributors
 Jacob Jennings
 Julie Gibson
 Michael Bachkabakian
 Vincent Weis
 
-# License
+## License
 This project uses the following license: MIT_License
