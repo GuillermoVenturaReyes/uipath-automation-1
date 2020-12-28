@@ -1,4 +1,4 @@
-# Project 3-1 UiPath-Automation-1
+# Introductory Email Automation
 
 ## Project Description
 
