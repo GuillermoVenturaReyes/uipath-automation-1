@@ -11,9 +11,19 @@ This program will automate the reptitive process of sending introductory emails 
 * Windows Credential Manager
 
 ## Features
-* Interact with Googles interfaces to log in/out of Google accounts, handle two factor authentication and access Gmail using the GSuite API
-* Take in all inputs beforehand in the form of a JSON string to make the process completely unattended.
+* Interact with Googles interfaces to log in/out of Google accounts, handle two factor authentication and access Gmail using the GSuite API.
 * Ability to make custom changes to the template message per batch. 
+* Take in all inputs beforehand in the form of a JSON string to make the process completely unattended. (example below)
+```
+{
+	"BatchName": "TestBatch-65465",
+	"Subject": "Welcome to Revature!",
+	"EmailTemplateFilePath": "C:\\Users\\<username>\\Documents\\RevatureAutomationFiles\\EmailTemplate.txt",
+	"CustomMessage": "",
+	"AssociateEmailsFilePath": "C:\\Revature\\201019-UTA0UiPath\\uipath-automation-1\\Data\\Input\\AssociateEmails.xlsx",
+	"MailService": "Zoho"
+}
+```
 
 ## Getting Started
 To get this automation running on your machine, you will need to install the Uipath Edge extension as well as setup UiPath Orchestrator or Windows Credential Manager with the following assets
