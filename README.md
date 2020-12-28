@@ -44,6 +44,7 @@ To get this automation running on your machine, you will need to install the Uip
 * Your 'GSuiteOAuthCredentials' will now be displayed on the screen.
 
 ###### Uipath extension for Edge
+
 * Make sure you have the UiPath web automation extension enabled on your Microsoft Edge browser. 
 * To do this, go to https://docs.uipath.com/studio/v2019-fastTrack/docs/installing-the-edge-extension for a step-by-step guide. (You will need to have studio installed already)
 * This will allow the automation to interact with the Edge browser
@@ -51,6 +52,7 @@ To get this automation running on your machine, you will need to install the Uip
 # First Time Run Notes
 
 ###### Consent Screen For Gmail
+
 * The consent screen that was configured in the previous steps will allow you to send emails with Gmail. 
 * But the first time you try to do this, you will encounter that consent screen and will need to manually give the bot consent to send emails. 
 * You will probably also have to get past the 'This app isn't verified' screen. Just click the Advanced button and then click 'Go to <App name>(unsafe)'. (This is your own application so there is actually no safety concern)
@@ -60,10 +62,5 @@ To get this automation running on your machine, you will need to install the Uip
 
 Once You have installed everything, have credentials & workbook path setup and dealt with the consent screen for the first time, you should be able to run the introductory email automation.
 
-## Contributors
 
-Jacob Jennings,
-Julie Gibson,
-Michael Bachkabakian,
-Vincent Weis
 
