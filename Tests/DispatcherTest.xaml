@@ -28,7 +28,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -56,6 +56,7 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="DispatcherTest" sap:VirtualizedContainerService.HintSize="478,678" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -84,9 +85,6 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_EmailSubject" />
         <OutArgument x:TypeArguments="x:String" x:Key="out_MailService" />
         <OutArgument x:TypeArguments="x:String" x:Key="out_BatchName" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C:\Users\&quot;+ Environment.UserName + Config(&quot;InputFileRelativePath&quot;).ToString" />
-        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,282" sap2010:WorkflowViewState.IdRef="CommentOut_2">
@@ -99,17 +97,13 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DispatcherV2 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="UnattendedDispatcher.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
               <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionDataDT" />
               <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody" />
               <OutArgument x:TypeArguments="x:String" x:Key="out_EmailSubject" />
               <OutArgument x:TypeArguments="x:String" x:Key="out_MailService" />
               <OutArgument x:TypeArguments="x:String" x:Key="out_BatchName" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_LocalPath">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C:\Users\&quot;+ Environment.UserName + Config(&quot;InputFileRelativePath&quot;).ToString" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LocalPath">["C:\Users\"+ Environment.UserName + Config("InputFileRelativePath").ToString]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
