@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>752,880</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1697,864</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatcher_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
@@ -97,9 +97,10 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This is the dispatcher sequence that gets called during the init state. It does the following actions:&#xA;- Read list of emails from excel file&#xA;- Gets the  batch name from the user&#xA;- Signs into Google&#xA;- Generates new google form&#xA;- Gets email body input from user&#xA;- Generates email body&#xA;&#xA;" DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="752.8,775.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This is the dispatcher sequence that gets called during the init state. It does the following actions:&#xA;- Read list of emails from excel file&#xA;- Gets the  batch name from the user&#xA;- Signs into Google&#xA;- Generates new google form&#xA;- Gets email body input from user&#xA;- Generates email body&#xA;&#xA;" DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="755,759" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="EmailTemplate" />
       <Variable x:TypeArguments="x:String" Name="CustomerMessage" />
@@ -120,24 +121,38 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="711.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Choosing Dispatcher implementation...&quot;]" />
-    <ui:PathExists DisplayName="Path Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="711.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_InputFilePath]" PathType="File" />
-    <If Condition="[FileExists]" sap:VirtualizedContainerService.HintSize="711.2,263.2" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Choosing Dispatcher implementation...&quot;]" />
+    <ui:PathExists DisplayName="Path Exists" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="713,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_InputFilePath]" PathType="File" />
+    <If Condition="[FileExists]" sap:VirtualizedContainerService.HintSize="713,260" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke UnattendedDispatcher workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="UnattendedDispatcher.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke UnattendedDispatcher workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="UnattendedDispatcher.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionDataDT">[out_TransactionDataDT]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">[out_EmailBody]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_EmailSubject">[out_EmailSubject]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_MailService">[out_MailService]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_BatchName">[out_BatchName]</OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">[in_InputFilePath]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionDataDT">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_TransactionDataDT" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_EmailBody">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_EmailBody" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_EmailSubject">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_EmailSubject" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_MailService">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_MailService" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_BatchName">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_BatchName" />
+            </OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InputFilePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InputFilePath" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
       <If.Else>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AttendedDispatcher workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="AttendedDispatcher.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AttendedDispatcher workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="AttendedDispatcher.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionDataDT">[out_TransactionDataDT]</OutArgument>
