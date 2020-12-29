@@ -1,10 +1,10 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="WriteTransactionReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_TransactionData" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_FilePath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="This variable should be the TransactionData variable used by the REFramework, modified with a status column, to be written to a file. This allows the user to see the state of the transactions, whether successful or not." Name="in_TransactionData" Type="InArgument(sd:DataTable)" />
+    <x:Property sap2010:Annotation.AnnotationText="This is the Config dictionary used by REFramework, complete with useful constants. Should be passed in to allow the use of values set in the Config.xlsx file." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="This is the file path to write the transaction report to." Name="in_FilePath" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>752,783.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,1108</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -35,7 +35,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -67,9 +67,10 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow writes a report of the transactions processed and their ultimate status by writing the TransactionData variable to a specified path in the Documents folder of the invoking user's computer." DisplayName="Write Transaction Report" sap:VirtualizedContainerService.HintSize="478.4,934.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow writes a report of the transactions processed and their ultimate status by writing the TransactionData variable to a specified path in the Documents folder of the invoking user's computer." DisplayName="Write Transaction Report" sap:VirtualizedContainerService.HintSize="478.4,1003.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="NowDateTime" />
       <Variable x:TypeArguments="x:String" Name="DateString" />
@@ -83,7 +84,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Writing transaction report...&quot;]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign - Datestamp for report" sap:VirtualizedContainerService.HintSize="436.8,161.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign - Datestamp for report" sap:VirtualizedContainerService.HintSize="436.8,130.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -102,18 +103,18 @@
               <InArgument x:TypeArguments="x:String">[String.Format("{0}.{1}.{2}", NowDateTime.Day,NowDateTime.Month,NowDateTime.Year)]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[TransactionReportWorkbookName]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[in_Config("logF_BusinessProcessName").ToString+"-TransactionReport-" + DateString + ".xlsx"]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <Assign sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Name of report file" sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[TransactionReportWorkbookName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("logF_BusinessProcessName").ToString+"-TransactionReport-" + DateString + ".xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - Full path to write to." sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FullPath]</OutArgument>
       </Assign.To>
