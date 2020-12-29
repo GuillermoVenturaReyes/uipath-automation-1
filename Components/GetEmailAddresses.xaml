@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>820.8,1414.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,1002.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetEmailAddresses_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
@@ -89,7 +89,7 @@
       <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Workflow to get all the email addresses that will be used in the send email process by reading a workbook/csv file.&#xA;&#xA;Throws ValidationException if the file read does not have an Email column." DisplayName="GetEmailAddresses" sap:VirtualizedContainerService.HintSize="831.2,1309.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Workflow to get all the email addresses that will be used in the send email process by reading a workbook/csv file.&#xA;&#xA;Throws ValidationException if the file read does not have an Email column." DisplayName="GetEmailAddresses" sap:VirtualizedContainerService.HintSize="597.6,897.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="WorkbookPath" />
     </Sequence.Variables>
@@ -99,8 +99,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="789.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Getting email addresses from user...&quot;]" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="789.6,1024" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="556,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Getting email addresses from user...&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="556,596" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Read file" sap:VirtualizedContainerService.HintSize="752.8,792.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
@@ -157,7 +157,7 @@
       </TryCatch.Catches>
       <TryCatch.Finally>
         <If Condition="[out_EmailAddressDT.Columns.Contains(&quot;Email&quot;)]" DisplayName="If there is no email column in DataTable" sap:VirtualizedContainerService.HintSize="519.2,364.8" sap2010:WorkflowViewState.IdRef="If_2">
-          <If.Then>
+          <If.Else>
             <Sequence DisplayName="Throw error if no Email column" sap:VirtualizedContainerService.HintSize="375.2,215.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -167,7 +167,7 @@
               <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Workbook file must contain Email column. Terminating Process now.&quot;]" />
               <Throw DisplayName="Throw ValidationException" Exception="[new ValidationException(&quot;Data table from workbook file must have an Email column&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </Sequence>
-          </If.Then>
+          </If.Else>
         </If>
       </TryCatch.Finally>
     </TryCatch>
