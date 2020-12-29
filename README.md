@@ -31,6 +31,10 @@ This program will automate the reptitive process of sending introductory emails 
 **AssociateEmailsFilePath**: *The file path to the .xlsx file containing the list of associate emails*  
 **MailService**: *The mail service you are sending your introduction emails from. As of now it supports "GSuite" (@gmail.com/@revature.com) and "Zoho" (@revature.net) values*
 
+The file that this JSON string should be stored in is called ```IntroEmailInput``` and the filepath to that txt file should be in a folder called ```RevatureAutomationFiles``` within your Windows machines Document folder. So the full path should look like this: ```/Documents/RevatureAutomationFiles/IntroEmailInput.txt```
+
+If you want the email to use a premade template, you will need to create one as a txt file called ```EmailTemplate.txt```and include it in the RevatureAutomationFiles folder.
+
 ## Getting Started
 To get this automation running on your machine, you will need to install the Uipath Edge extension as well as setup UiPath Orchestrator or Windows Credential Manager with the following assets
 * GoogleCredential
