@@ -1,0 +1,336 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Google_Check2FA" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Browser" Type="InArgument(ui:UiElement)" />
+  </x:Members>
+  <this:Google_Check2FA.in_Browser>
+    <InArgument x:TypeArguments="ui:UiElement" />
+  </this:Google_Check2FA.in_Browser>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>829.6,899.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Google_Check2FA_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="56">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Google_Check2FA" sap:VirtualizedContainerService.HintSize="689.6,834.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="Is2FA" />
+      <Variable x:TypeArguments="x:Boolean" Name="IsLoggedIn" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <x:Double x:Key="Width">656</x:Double>
+        <x:Double x:Key="Height">797.6</x:Double>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 290,107.7 290,125.6</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID3</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID0">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">120,513.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,192.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">120,610 90,610 90,230 190,230</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence sap2010:Annotation.AnnotationText="This sequence handles 2FA. It opens a message box with instructions for the user to  finish signing in with the correct 2FA method, then press Ok to continue program execution. " DisplayName="Handle 2FA" sap:VirtualizedContainerService.HintSize="200,192.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Handling 2FA for Google account&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;2FA detected. Please finish signing on until you are at the home page and see your profile icon in the top right of the webpage, then click the Ok button on this message box.&quot;]" />
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">190,125.6</av:Point>
+              <av:Size x:Key="ShapeSize">200,208.8</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">290,334.4 290,346.4</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap2010:Annotation.AnnotationText="After successful sign in, checks for 2FA prompt to show up.&#xA;&#xA;Output:&#xA;Is2FA: boolean variable that is set to true if the 2FA prompt is opened." DisplayName="Check for 2FA" sap:VirtualizedContainerService.HintSize="1729.6,1320.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Sign in - Google Accounts" sap:VirtualizedContainerService.HintSize="1688,1152" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[in_Browser]" InteractionMode="Simulate" Version="V1">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Check for popups" sap:VirtualizedContainerService.HintSize="1654.4,935.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Boolean" Name="TwoStepPopupExists" />
+                      <Variable x:TypeArguments="x:Boolean" Name="PhoneNotificationExists" />
+                      <Variable x:TypeArguments="x:Boolean" Name="VerifyItsYouPopupExists" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check if user is alrady signed in by image" sap:VirtualizedContainerService.HintSize="1612.8,840.8" sap2010:WorkflowViewState.IdRef="NCheckState_6" Timeout="5">
+                      <uix:NCheckState.IfExists>
+                        <Sequence DisplayName="Signed In" sap:VirtualizedContainerService.HintSize="304,156" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[Is2FA]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </uix:NCheckState.IfExists>
+                      <uix:NCheckState.IfNotExists>
+                        <Sequence DisplayName="Not Signed In" sap:VirtualizedContainerService.HintSize="1256,612.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Parallel sap2010:Annotation.AnnotationText="Parallel can be used to check/search for elements, but absolutely should not be used for UI Interaction (Clicks, Typing, etc)." DisplayName="Parallel - Popup checks" sap:VirtualizedContainerService.HintSize="1214.4,265.6" sap2010:WorkflowViewState.IdRef="Parallel_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2 Step popup" EnableIfExists="False" EnableIfNotExists="False" Exists="[TwoStepPopupExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_1" Timeout="10">
+                              <uix:NCheckState.IfExists>
+                                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfExists>
+                              <uix:NCheckState.IfNotExists>
+                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfNotExists>
+                              <uix:NCheckState.Target>
+                                <uix:TargetAnchorable BrowserURL="https://accounts.google.com/signin/v2/challenge/az?hl=en&amp;passive=true&amp;continue=https%3A%2F%2Fwww.google.com%2F&amp;ec=GAZAAQ&amp;flowName=GlifWebSignIn&amp;flowEntry=AddSession&amp;cid=2&amp;TL=AM3QAYYhN0-k8FPdyxSlVTEOrXlCVLKUWpFVvHhpSh23u3aYePvTdhou1ftgkNDQ&amp;navigationDirection=forward" DesignTimeRectangle="547, 524, 200, 30" ElementType="Text" FriendlyName="'2-Step Verification'" FullSelectorArgument="&lt;webctrl parentid='headingText' tag='SPAN' aaname='2-Step Verification' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='headingText' tag='SPAN' type='' aaname='2-Step Verification' check:text='2-Step Verification' /&gt;" ImageBase64="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" InformativeScreenshot="9a45c0c1b7ebf3365606c9c4f114042c.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Sign in - Google Accounts' /&gt;" SearchSteps="Selector" Text="2-Step Verification" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='SPAN' type='' /&gt;">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="610, 484, 75, 24" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl parentid='logo' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='logo' tag='svg' type='' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE8AAAAcCAYAAAAgLuLfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASFSURBVGhD7ZlNb01BGMdtfAM+gY+AD+BlqxJW2h1RthXbCgsJohKJWmChIUiwwMZrUtIIosm1sGiQVBet15ZWe9ve0zvOb3qeuc+ZztyrdW/kSP/Jk9M7M835+83M8zxX15hVrVir8P5CdeGN/aia26/mTdfVsmnrmTZbj/+yTz4zPlWuZiuLo8cjz138rYLwgNL7aM7CqheA7Hs2l/1WMdTx4LDZdGO32f+kOxtZuZbAA1znpZkcpD3nps2Ju7Pmcgqq+2bZftbzjBdFLYPng9t/ccaUhpNsNi/GgciaIl3flsHjdAk4TlgjKMwXCRxqCTyKg4DjRBUNyp+qJfDOPawViPtvKtloc1SdmjTzpUEbydhoNtpY1fH+NJ6aank4G6kvNrz0MbERUyN4+BOvjeTgdV0pO3jNEkYmTx0zX7ZtzsX3jjYzO9CfrfJUmTDJ232m8nhtLpLB7RZmSEA7ea+Wcgg6AQ4Bh4LWiieKwcMPvrTPrzu3mpnb1xcXBOTgyUuBGBNmMFIvRJX3Q/bl2owf5fv3stWLqk6WTKV//RJwOhZG+7LVi3r3acH1oPVC/l0hePgI+ZOY6u3JVua1LHi0JNpQKETf22u7yMuByUnE6Ne2LW5uvvQ6+40U+MCGGqShQ4vXNr2yCyNnU6jr3Jw+gVR7eTcFjy4AoLdezud8xeDhSbzgC3+kGcZ/dB8O+hQ5eNK7tafPmOzJS034ofs+pHfyV98FO6YFSJnHIOJEaXC+ACbzyZtddgw/8l65llp6Hp/Ih8fGihcNCHhT58+4uYlDB7OZmhw8WhN5EZV3OdItDtI7xi6GNNF1wK1BABE45L2QksFttTWptOdYdyAbG4M33tluPfBEAPx5pOaf4Bb5KQY5eHqXgLEc+QYFjBgKiRMp5pADk17dmBY+HMvB4328l/fHJGti8BygtFj4BWPy5NHgdRU5eEhfv9g3C186t/Az8k9VSBjTa/xTFVLydm8QHhGT5MQYPJ1/CU4ZGxu7MVo5eANDiTNDBWsEkPVS6XacrjXWM7euOTOhlgRjUonldOpTVf1yx47llF5lqcTJi412SG8cXnzpxj8GT6cYfPvCawxkDh7yKyr9k2+MzzrfEBo0yVZ2FEh+Ih7v7HCGJZdQVQUekHI9Hb1f2ufJPNUXAYdN4/3+ZjOnv6fH4OFNvOBLgxKvXOfQ9V0CD+n81ygwz3pfuuISGNDQCK63lq64RPJyUw6aHUuvt5bvFWD0m3qMiMFDOoVYX2llJfRYqNcLwkPsnK6ioeD01avMAPRzijYTug4WoOrpdNgWJlCJASgnUAf5TnIeXlEIHtItiw78h64zisITkccwx3WW4HOsNfAFICCShAmMcB3qKgUERPIgRYIn3z7qCT/kQPo9Qm6DQMU3+jz9zYUvfOEPkOI1lu9QQ3hFEDk4tJmMySmUTqCZKjQ84Eh7RWHzpdMOX9marcKfPN3rUSj4wxR/V9FFQ4pFs1V4eJw+/Z8DfjAXutLN0H+R8xAFghMmBQJoFIlWgUP/Dbx/oVV4K5YxvwG2TqQVOI7OxgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NCheckState.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NCheckState>
+                            <uix:NCheckState CheckVisibility="True" DisplayName="Check for 2FA phone notification" EnableIfExists="False" EnableIfNotExists="False" Exists="[PhoneNotificationExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_4" Timeout="10">
+                              <uix:NCheckState.IfExists>
+                                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfExists>
+                              <uix:NCheckState.IfNotExists>
+                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfNotExists>
+                              <uix:NCheckState.Target>
+                                <uix:TargetAnchorable BrowserURL="https://accounts.google.com/signin/v2/challenge/az?hl=en&amp;passive=true&amp;continue=https%3A%2F%2Fwww.google.com%2F&amp;ec=GAZAAQ&amp;flowName=GlifWebSignIn&amp;flowEntry=AddSession&amp;cid=6&amp;navigationDirection=forward&amp;TL=AM3QAYZAnWEqSrP_vZneVsiZExM9licdLE0Ljz6dBOMBmuYct39obuUBGYgrPJub" DesignTimeRectangle="474, 362, 212, 188" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl tag='IMG' src='https://ssl.gstatic.com/accounts/embedded/signin_tapyes.gif' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='IMG' src='https://ssl.gstatic.com/accounts/embedded/signin_tapyes.gif' type='' aaname='' /&gt;" ImageBase64="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" InformativeScreenshot="db82de1e96824f40ab693edf20108229.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Sign in - Google Accounts' /&gt;" SearchSteps="Image" />
+                              </uix:NCheckState.Target>
+                            </uix:NCheckState>
+                            <uix:NCheckState CheckVisibility="True" DisplayName="Check App State 'Verify it's you'" EnableIfExists="False" EnableIfNotExists="False" Exists="[VerifyItsYouPopupExists]" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="NCheckState_5" Timeout="10">
+                              <uix:NCheckState.IfExists>
+                                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfExists>
+                              <uix:NCheckState.IfNotExists>
+                                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="249.6,85.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </uix:NCheckState.IfNotExists>
+                              <uix:NCheckState.Target>
+                                <uix:TargetAnchorable BrowserURL="https://accounts.google.com/ServiceLogin/webreauth?hl=en&amp;passive=true&amp;continue=https%3A%2F%2Fwww.google.com%2F&amp;ec=GAZAAQ&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin" DesignTimeRectangle="1757, 732, 359, 75" ElementType="Text" FriendlyName="'Verify it's you'" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Verify it&amp;apos;s you' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' aaname='Verify it&amp;apos;s you' type='' check:text='Verify it&amp;apos;s you' /&gt;" ImageBase64="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" InformativeScreenshot="2bcfab8dcabe2905db9babdd941e3241.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Sign in - Google Accounts' /&gt;" SearchSteps="Selector" Text="Verify it's you" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='SPAN' type='' /&gt;" />
+                              </uix:NCheckState.Target>
+                            </uix:NCheckState>
+                          </Parallel>
+                          <If Condition="[TwoStepPopupExists OrElse PhoneNotificationExists OrElse VerifyItsYouPopupExists]" DisplayName="If One of the popups appeared" sap:VirtualizedContainerService.HintSize="1214.4,212.8" sap2010:WorkflowViewState.IdRef="If_1">
+                            <If.Then>
+                              <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[Is2FA]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Then>
+                            <If.Else>
+                              <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[Is2FA]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </uix:NCheckState.IfNotExists>
+                      <uix:NCheckState.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.google.com/" DesignTimeRectangle="1225, 127, 32, 32" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl tag='H1' aaname='Welcome*' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Google Account:*' tag='IMG' type='' /&gt;" ImageBase64="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" InformativeScreenshot="3f31d59a2ecb8b854e0de50b38bed089.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Google*' /&gt;" SearchSteps="Selector">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="1181, 128, 30, 30" FriendlyName="'A  https://www.google.c…'" FullSelectorArgument="&lt;webctrl aria-role='button' parentid='gbwa' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='button' parentid='gbwa' tag='A' type='' aaname='Google apps' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABYSURBVFhH7dAxCgAxCETRvbP3x1QpMhCJjezAf2Az1ccvf4IQRYgiRBGinkIi4ritu1cIUV4hE7xCbq/u7hVClFfIBK+Q26u7e4UQ5RUygRBFiCJEEXLKXKAQErCKcrT3AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NCheckState.Target>
+                    </uix:NCheckState>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARHSURBVFhHvZddbBRVFMf7YrAq+OSbD6Kgb0qUUh60xq9VtA8k1EJrH1CsGIM+GLUmBA0kFi0WSMCHLcVCTMO2GmjFCiUFpH60sUjMEtIGLaAWama32w92dt2vOf7PndPd3M7sdmobf8k/M/fec8//zJ07s7NFXrEsawlUnclkmqEBaAxKisLS14yYKo6VafMHyR5A4hYoTh5BbAw6iLnLJc3cQZ7bkKQRSttp5w7mpqBdKKRY0noDE+7HxEuSZ94gVxA5l0n6wiDwYUwIyVyN9I0RMls/p4l33qDwi8+R4VtNxjOlFF7no/G3XyfzcBOlR/6UaB3kNHBYITbuyJU7zNOj12ly+/tkPL2KjKdKCgsxkx++p+bMhIvIuxIYuB0BjmWPn+qi0Atl7mYFFCp/nP45e0qy5IAH3w7nnsBAo8RkMY8cck3uVVMN2yWTDrwaxNYGFfGjpu12vnK3pKxIbRVFD+yj+DdHKd51DOf7KfJatRYztbueyLIkmw68UtqtQEeLjCl4s4Wef0xLyBqrWUuJ8/0S5SQx0EfhDeV0c/+n0pMfeDYrc5zfiYb2konufdNhPr7lZbKmpiQiP5YZlbPCwNPEKizm5a+WPoUVG6ZU9yKarLsna86PXGYiIhELB7zX8/I3S1uRuVpPqZ5blMx9d1FozUqKnzwuowsLvP1cwIC0FelffNkCWImjS4lSKRldWODdzwWMSVuR6r1bKyB9sUpG3Hnyo6hnnb2kXwi8DS4gKW1F6vQirYDM79tkxB03o3xq/VGz4gIS/2sBLecSMstmuoCwtBWOWxDcICPuuBnlU3u/YwXULdA34YVntQJGeh+kZGbum/CKkXEUcG7QsQfUJpzxGH6cNT/etZQeDayljuEeGfVOoC/pKGB0Qn81w9vPLyJtm1uxqxTrKab6jkdoZWCdkq/jFQrHxyVidm7GLarYa2rmG/0xGc0B70ouYAkq0Ub39O3Imk+rpvtdmkjM/ipO4iet7khcM2e1Oe+/icMd6vcAjYN2t82NqEFlX73kKKL8683Ue/28RDm5PH6NNnUGYDipmfNqxBKO5W9S5gxWYTk6tB1y4lqvo4BpVXz7FjVeaKH2yyfoy99O0mfBVnq1ZyuVBCrUeOmhOnrik7+yBXw/pH/XwisJz/vE3gadu2Q8yxdDnQ5zrypp3Uhlu392PPsMvHaKbQ7082f4RTskR/cfP+B21LiaFFJpWyUdCHZKlhzw+BWHW8VWB8uyDAH89aoxaoZo6097aFWbvcSzafOZD2gwMiyzcyD33zjcK3buIGCFWxEMb87Dg8doy3c7aE1nLa1ur1RX6uvYRLWnt6m9MBS5ItE6bI4LfEhsCiMrEZS58wa5eNkLX/lMUEQxJjZA//ljAHP5j+tOnLrfcy/IavA/Yn5xeIJjoSbM1R+1+YBki6H1SOyH+iEDSoj4nPv8iKlEDfYbblaKiv4FoeF/NqqvoEMAAAAASUVORK5CYII=" InformativeScreenshot="c08e0374f495ac8a94d3bbe43bd739cd.png" Selector="&lt;html app='msedge.exe' title='Sign in - Google Accounts'/&gt;" />
+              </uix:NApplicationCard.TargetApp>
+            </uix:NApplicationCard>
+          </Sequence>
+          <FlowStep.Next>
+            <FlowDecision x:Name="__ReferenceID2" Condition="[Is2FA]" DisplayName="2FA?" sap:VirtualizedContainerService.HintSize="70.4,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">254.8,346.4</av:Point>
+                  <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
+                  <x:String x:Key="TrueLabel">Has 2FA</x:String>
+                  <x:String x:Key="FalseLabel">No 2FA</x:String>
+                  <av:PointCollection x:Key="TrueConnector">254.8,390 220,390 220,513.6</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">325.2,390 355.2,390 355.2,572 400,572</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <FlowDecision.False>
+                <FlowStep x:Name="__ReferenceID1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">400,515.6</av:Point>
+                      <av:Size x:Key="ShapeSize">200,112.8</av:Size>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap2010:Annotation.AnnotationText="The user has successfully signed in. Finish workflow." DisplayName="Successful Sign in" sap:VirtualizedContainerService.HintSize="200,112.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </FlowStep>
+              </FlowDecision.False>
+            </FlowDecision>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+  </Flowchart>
+</Activity>
