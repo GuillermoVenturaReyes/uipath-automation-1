@@ -42,8 +42,11 @@ To get this automation running on your machine, you will need to install the Uip
 * EmailWorkbookPath
 * GSuiteOAuthCredential
 
+
 ###### Email Credentials (Google & Zoho Credential)
 * For this step, all you need to do is add the Gmail and Zoho account credentials to Orchestrator as credential Assets or add them to your Windows Credential Manager if you do not want to use Orchestrator.
+* For outlook, all that is required is an open Outlook application 
+* Due to a recent update to Zoho, credentials must include an application password. Created by going to Zoho, selecting your account. Then selecting the security tab. Select the App Passwords tab, and creating a new app password for your zoho account. This password should be used in place of your actual password to bypass 2FA.
 
 ###### Email Workbook Path
 
